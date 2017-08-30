@@ -1,0 +1,44 @@
+nav {
+  background-color: #8fd1aa;
+  color: #363636;
+}
+
+nav .brand-logo {
+  color: #363636;
+}
+
+nav i {
+  color: #363636;
+}
+
+.content-container {
+  color: #363636;
+}
+
+p {
+  font-size: 13px;
+}
+
+a {
+  font-size: 13px;
+}
+
+div span .card-title {
+  font-size: 15px;
+}
+
+div h1 {
+  font-size: 15px;
+}
+
+div div[container-type='top-menu'] {
+  position: relative;
+  margin-top: 10px;
+}
+
+div div[container-type='top-menu'] a {
+  width: 100%;
+}
+ 
+
+ /*# sourceMappingURL= style.css.map */

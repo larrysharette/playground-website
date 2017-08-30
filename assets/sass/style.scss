@@ -1,0 +1,49 @@
+$nav-background-theme: #8fd1aa;
+$main-text-color: #363636;
+$p-font-size: 13px;
+$h-font-size: 15px;
+
+nav {
+    background-color: $nav-background-theme;
+    color: $main-text-color;
+
+    .brand-logo {
+        color: $main-text-color;
+    };
+
+    i {
+        color: $main-text-color;
+    }
+
+};
+
+.content-container {
+    color: $main-text-color;
+};
+
+p {
+    font-size: $p-font-size;
+
+    
+};
+
+a {
+    font-size: $p-font-size;
+}
+
+div {
+    span .card-title {
+        font-size: $h-font-size;
+    };
+    h1 {
+        font-size: $h-font-size;
+    };
+    div[container-type='top-menu'] {
+        position: relative;
+        margin-top: 10px;
+        
+        a {
+            width: 100%;
+        }
+    }
+}
