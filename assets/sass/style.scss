@@ -1,7 +1,9 @@
 $nav-background-theme: #8fd1aa;
+$main-theme-color: #8fd1aa;
 $main-text-color: #363636;
-$p-font-size: 13px;
-$h-font-size: 15px;
+$p-font-size: 0.9rem;
+$h-font-size: 1rem;
+$title-font-size: 2.5rem;
 
 nav {
     background-color: $nav-background-theme;
@@ -45,5 +47,15 @@ div {
         a {
             width: 100%;
         }
+    }
+}
+
+.side-nav-title {
+    height: 150px;
+    background-color: $main-theme-color;
+    padding: 3rem 0rem 2rem 1rem;
+    h1{
+        font-size: $title-font-size;
+        margin: 0px;
     }
 }
