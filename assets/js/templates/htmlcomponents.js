@@ -19,29 +19,31 @@ function sideNav(isAuthenticated){
 function loadSignUp() {
     let content = `
     
-    `
+    `;
+
+    $('div[container-type="content"]').html(content);
 }
 
 function loadInterestMap() {
     let content = `
     
-    `
+    `;
 }
 
 function loadProfile() {
     let content = `
     
-    `
+    `;
 }
 
 function loadGroups() {
     let content = `
     
-    `
+    `;
 }
 
 function loadActivityPlanner() {
     let content = `
     
-    `
+    `;
 }
