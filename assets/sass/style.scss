@@ -59,3 +59,50 @@ div {
         margin: 0px;
     }
 }
+
+h4[title-type="signup"]{
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0px;
+
+}
+
+div[container-type="signup"]{
+
+    div.input-field {
+        margin: 0;
+    }
+}
+
+div[container-type="signup-footer"] {
+    a {
+        width: 100%;
+    }
+
+    .btn, .btn-default, .btn-flat{
+            padding: 0 .9rem;
+        }
+}
+
+div[container-type="signup-container"] {
+    background-color: rgba(255,255,255,.6);
+    margin-top: .5rem;
+    padding: 0 1rem;
+    width: 100%;
+    height: 100%;
+
+    * {
+        color: $main-text-color;
+    }
+    ::-webkit-input-placeholder {
+        color: $main-text-color;
+    }
+}
+
+body {
+    background-image: url('../images/signup.jpeg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
