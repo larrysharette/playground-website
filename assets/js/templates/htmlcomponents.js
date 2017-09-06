@@ -78,9 +78,11 @@ function loadLogin() {
                             <label for="password" data-error="" >Password</label>
                         </div>
                     </div>
+                    <div container-type="login-error">
+                    </div>
                     <div class="row" container-type="signup-footer">
                         <div class="col s12">
-                            <a class="btn btn-default" onclick="logIn()">LOGIN</a>
+                            <a class="btn btn-default" onclick="beginLogin()">LOGIN</a>
                         </div>
                     </div>
                 </div>

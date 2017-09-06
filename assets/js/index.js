@@ -17,18 +17,27 @@ function loadResults(data){
 }
 
 function checkLogin() {
-    var isLoggedIn = localStorage.getItem('isLoggedIn');
-    
-    if (isLoggedIn === true){
+    var isLoggedIn = localStorage.getItem('isLoggedin');
+    if (isLoggedIn === 'true'){
+        $('body').removeClass('sign-login-screen');
         loadActivitySearch();
     } else {
-        console.log(isLoggedIn);
         loadSignUp();
+        $('body').addClass('sign-login-screen');
     }
 }
 
-function logIn() {
-    
+function beginLogin() {
+    var username = $('#username').val();
+    var password = $('#password').val();
+
+    if (username != '' && password != ''){
+        $('div[container-type="signup-error"]').html(``);
+        var data = {'username':username, 'password':password}
+        logIn(JSON.stringify(data));
+    } else {
+        $('div[container-type="login-error"]').html(`<div class="row"><p style="color:red; font-weight:700; text-align:center;">Form is not completely filled out.</p></div>`);
+    }
 }
 
 function signUp() {
@@ -41,7 +50,7 @@ function signUp() {
     if (username != '' && password != '' && name != '' && city != '' && state != ''){
         $('div[container-type="signup-error"]').html(``);
         var data = {'username':username, 'password':password, 'name':name, 'city':city, 'state':state}
-        createUser(data);
+        createUser(JSON.stringify(data));
     } else {
         $('div[container-type="signup-error"]').html(`<div class="row"><p style="color:red; font-weight:700; text-align:center;">Form is not completely filled out.</p></div>`);
     }
