@@ -3,6 +3,7 @@ $( document ).ready(function(){
     //$('.content-container').load('home.html');
     checkLogin();
     Materialize.updateTextFields();
+    
 });
 
 function loadResults(data){
@@ -21,6 +22,7 @@ function checkLogin() {
     if (isLoggedIn === 'true'){
         $('body').removeClass('sign-login-screen');
         loadActivitySearch();
+        
     } else {
         loadSignUp();
         $('body').addClass('sign-login-screen');
@@ -75,3 +77,33 @@ function addCard(data) {
     $('div[container-type="activities"]').append(card);
 }
 
+function test(element){
+    value = $(element).val();
+    console.log(value);
+    Materialize.toast(value, 1000);
+}
+
+function discover(){
+    Materialize.toast('Feature not implemented!', 4000);
+}
+
+function customSearch(){
+    Materialize.toast('Feature not implemented!', 4000);
+}
+
+function selectKeyword(element){
+    var text = $(element).find('h4').text();
+    Materialize.toast(text, 1000);
+}
+
+function removeItem(element) {
+    $(element).closest('li').remove();
+}
+
+function activitySearch(element) {
+    var data =$(element).closest('.modal').find('ul[collection-type="keyword-selection"]');
+    // for(i=0; i < data.length; i){
+    //     //console.log(data[i]);
+    // }
+    console.log(data);
+}
