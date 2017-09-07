@@ -1,21 +1,25 @@
 function sideNav(isLogedin){
+    console.log(isLogedin);
     let sideNav = ``;
-    if (isLogedin === 'true') {
+    if (isLogedin === true) {
         sideNav = `
             <li><div class="side-nav-title user-id=""><h1>Hello</h1></div></li>
-            <li><a onclick="loadSignUp()" class="btn btn-default">Sign Up</a></li>
-            <li><a onclick="loadLogin()" class="btn btn-default">Login</a></li>
+            <li><a onclick="loadSignUp()" class="btn btn-flat">Sign Up</a></li>
+            <li><a onclick="loadLogin()" class="btn btn-flat">Login</a></li>
         `
     } else {
         sideNav = `
             <li><div class="side-nav-title user-id=""><h1>Hello </h1></div></li>
-            <li><a onclick="loadProfile()" class="btn btn-default">Edit Profile</a></li>
-            <li><a onclick="loadActivitySearch()" class="btn btn-default">Activity Search</a></li>
-            <li><a onclick="loadGroups()" class="btn btn-default">Groups</a></li>
-            <li><a onclick="loadInterestMap()" class="btn btn-default">Interest Map</a></li>
-            <li><a onclick="loadActivityPlanner()" class="btn btn-default">Activity Planner</a></li>
+            <li><a onclick="loadProfile()" class="btn btn-flat">Edit Profile</a></li>
+            <li><a onclick="loadActivitySearch()" class="btn btn-flat">Activity Search</a></li>
+            <li><a onclick="loadGroups()" class="btn btn-flat">Groups</a></li>
+            <li><a onclick="loadInterestMap()" class="btn btn-flat">Interest Map</a></li>
+            <li><a onclick="loadActivityPlanner()" class="btn btn-flat">Activity Planner</a></li>
         `
     }
+
+    $('ul[container-type="mobile-side-nav"]').html(sideNav);
+    $('ul[container-type="desktop-side-nav"]').html(sideNav);
 }
 
 function loadSignUp() {
@@ -143,6 +147,10 @@ function loadActivityPlanner() {
     $('div[container-type="content"]').html(content);
 }
 
+function loadActivityResults() {
+    loadPlacesSwiper();
+}
+
 function loadActivitySearch() {
     let content = `
         <div class="row" container-type="activity-search-header">
@@ -190,10 +198,115 @@ function loadActivitySearch() {
 
     $('div[container-type="content"]').html(content);
     $('body').addClass('activity-search-screen');
-    $('div[container-type="modals"]').load('home.html');
+    // setTimeout(function(){
+    //     $('select').material_select();
+    //     $('.modal').modal();
+    //     $('.modal').modal('open');
+    // }, 100)  
+}
+
+
+
+function outdoorModal() {
+    let content = `
+        <div id="keywordSelection" class="modal">
+            <div class="modal-content">
+                <h4 title-type="modal-title">OUTDOOR</h4>
+                <ul class="collection" collection-type="keyword-selection">
+                    <li class="collection-item" data="bbq"><div>BBQ<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="indian"><div>INDIAN<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="sushi"><div>SUSHI<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="chinese"><div>CHINESE<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="bar"><div>BAR<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a onclick="activitySearch($(this))" class="btn btn-default">Search</a>
+            </div>
+        </div>
+    `;
+
+    $('div[container-type="modals"]').html(content);
     setTimeout(function(){
-        $('select').material_select();
         $('.modal').modal();
         $('.modal').modal('open');
-    }, 100)  
+    }, 100) 
+}
+
+function eventsModal() {
+    let content = `
+        <div id="keywordSelection" class="modal">
+            <div class="modal-content">
+                <h4 title-type="modal-title">EVENTS</h4>
+                <ul class="collection" collection-type="keyword-selection">
+                    <li class="collection-item" data="bbq"><div>BBQ<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="indian"><div>INDIAN<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="sushi"><div>SUSHI<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="chinese"><div>CHINESE<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="bar"><div>BAR<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a onclick="activitySearch($(this))" class="btn btn-default">Search</a>
+            </div>
+        </div>
+    `;
+
+    $('div[container-type="modals"]').html(content);
+    setTimeout(function(){
+        $('.modal').modal();
+        $('.modal').modal('open');
+    }, 100) 
+}
+
+function musicModal() {
+    let content = `
+        <div id="keywordSelection" class="modal">
+            <div class="modal-content">
+                <h4 title-type="modal-title">MUSIC</h4>
+                <ul class="collection" collection-type="keyword-selection">
+                    <li class="collection-item" data="bbq"><div>BBQ<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="indian"><div>INDIAN<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="sushi"><div>SUSHI<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="chinese"><div>CHINESE<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="bar"><div>BAR<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a onclick="activitySearch($(this))" class="btn btn-default">Search</a>
+            </div>
+        </div>
+    `;
+
+    $('div[container-type="modals"]').html(content);
+    setTimeout(function(){
+        $('.modal').modal();
+        $('.modal').modal('open');
+    }, 100) 
+}
+
+function foodModal() {
+    let content = `
+        <div id="keywordSelection" class="modal">
+            <div class="modal-content">
+                <h4 title-type="modal-title">FOOD</h4>
+                <ul class="collection" collection-type="keyword-selection">
+                    <li class="collection-item" data="bbq"><div>BBQ<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="indian"><div>INDIAN<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="sushi"><div>SUSHI<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="chinese"><div>CHINESE<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                    <li class="collection-item" data="bar"><div>BAR<a onclick="removeItem($(this))" class="secondary-content"><i class="material-icons">close</i></a></div></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a onclick="activitySearch($(this))" class="btn btn-default">Search</a>
+            </div>
+        </div>
+    `;
+
+    $('div[container-type="modals"]').html(content);
+    setTimeout(function(){
+        $('.modal').modal();
+        $('.modal').modal('open');
+    }, 100) 
 }

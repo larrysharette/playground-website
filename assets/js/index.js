@@ -7,7 +7,7 @@ $( document ).ready(function(){
 });
 
 function loadResults(data){
-    console.log(data.results.length);
+    console.log(data);
     if (data.results.length > 0){
         console.log(data);
         for(i=0; i < data.results.length; i++){
@@ -22,10 +22,11 @@ function checkLogin() {
     if (isLoggedIn === 'true'){
         $('body').removeClass('sign-login-screen');
         loadActivitySearch();
-        
+        sideNav(isLoggedIn);
     } else {
         loadSignUp();
         $('body').addClass('sign-login-screen');
+        sideNav(isLoggedIn);
     }
 }
 
@@ -64,12 +65,12 @@ function addCard(data) {
         <div class="card white darken-2" place-id="${data.place_id}">
             <div class="card-content">
                 <span class="card-title">${data.name}</span>
-                <p>Address: ${data.formatted_address}</p>
+                <p>Address: ${data.vicinity}</p>
             </div>
             <div class="card-action">
-                <a href="#">Hate It</a>
-                <a href="#">Interested</a>
-                <a href="#">Like It</a>
+                <a onclick="updateInterest($(this))" interest-type="-1">Hate It</a>
+                <a onclick="updateInterest($(this))" interest-type="0">Interested</a>
+                <a onclick="updateInterest($(this))" interest-type="1">Like It</a>
             </div>
         </div>
     </div>
@@ -93,7 +94,15 @@ function customSearch(){
 
 function selectKeyword(element){
     var text = $(element).find('h4').text();
-    Materialize.toast(text, 1000);
+    if(text.toLowerCase() === 'food') {
+        foodModal();
+    } else if(text.toLowerCase() === 'music'){
+        musicModal();
+    } else if(text.toLowerCase() === 'events'){
+        eventsModal();
+    } else if(text.toLowerCase() === 'outdoor'){
+        outdoorModal();
+    };
 }
 
 function removeItem(element) {
@@ -101,9 +110,27 @@ function removeItem(element) {
 }
 
 function activitySearch(element) {
-    var data =$(element).closest('.modal').find('ul[collection-type="keyword-selection"]');
-    // for(i=0; i < data.length; i){
-    //     //console.log(data[i]);
-    // }
-    console.log(data);
+    var elements = $(element).closest('.modal').find('ul[collection-type="keyword-selection"]');
+    var type = $(element).closest('.modal').find('h4[title-type="modal-title"]').text();
+    let data = {'type': type};
+    var dataArray = [];
+    
+    $.each(elements.find('.collection-item'), function(key, value){
+        let keyValue = {};
+        keyValue.keyword = $(this).attr('data');
+        dataArray.push(keyValue);
+    })
+    data.keywords = dataArray;
+    data.user_id = localStorage.getItem('user_id');
+    getPlaces(JSON.stringify(data));
+}
+
+function updateInterest(element) {
+    var interestType = $(element).attr('interest-type');
+    let data = {};
+    data.user_id = localStorage.getItem('user_id');
+    data.place_id = $(element).closest('div[place-id]').attr('place-id');
+    data.interest_type = interestType;
+
+    postInterest(JSON.stringify(data));
 }

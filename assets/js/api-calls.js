@@ -1,14 +1,29 @@
-function getPlaces(type, keyword){
-    var userId = localStorage.getItem('user_id');
-    var data = JSON.stringify({'type':type, 'keyword':keyword,'user_id':userId});
+function getPlaces(data){
     $.ajax({
         url:'http://127.0.0.1:5000/api/places',
-        type: 'GET',
+        type: 'POST',
         data: data,
         contentType:'application/json; charset=utf-8',
         success: function(data){
             //console.log(data);
+            loadActivityResults();
             loadResults(data);
+        },
+        error: function(data){
+            Materialize.toast('Nothing returned!', 1000);
+        }
+    });
+}
+
+function postInterest(data){
+    $.ajax({
+        url:'http://127.0.0.1:5000/api/interests',
+        type: 'POST',
+        data: data,
+        contentType:'application/json; charset=utf-8',
+        success: function(data){
+            //console.log(data);
+            Materialize.toast('Interest Map Updated!', 1000);
         }
     });
 }
