@@ -17,9 +17,11 @@ function sideNav(isLogedin){
             <li><a onclick="loadActivityPlanner()" class="btn btn-flat">Activity Planner</a></li>
         `
     }
+    let desktopScreen = `<p class="show-on-large">This website is currently under construction with a mobile first development cycle. Check back later for a desktop experience.</p>`;
 
     $('ul[container-type="mobile-side-nav"]').html(sideNav);
-    $('ul[container-type="desktop-side-nav"]').html(sideNav);
+    $('ul[container-type="desktop-side-nav"]').html(``);
+    $('ul[container-type="content"]').html(desktopScreen);
 }
 
 function loadSignUp() {
@@ -101,7 +103,7 @@ function loadLogin() {
 
 function loadInterestMap() {
     let content = `
-    
+        <h2>Feature to added soon</h2>
     `;
 
     $('div[container-type="content"]').html(content);
@@ -125,7 +127,7 @@ function loadPlacesSwiper() {
 
 function loadProfile() {
     let content = `
-    
+        <h2>Feature to added soon</h2>
     `;
 
     $('div[container-type="content"]').html(content);
@@ -133,7 +135,7 @@ function loadProfile() {
 
 function loadGroups() {
     let content = `
-    
+        <h2>Feature to added soon</h2>
     `;
 
     $('div[container-type="content"]').html(content);
@@ -141,7 +143,7 @@ function loadGroups() {
 
 function loadActivityPlanner() {
     let content = `
-    
+        <h2>Feature to added soon</h2>
     `;
 
     $('div[container-type="content"]').html(content);
@@ -198,11 +200,9 @@ function loadActivitySearch() {
 
     $('div[container-type="content"]').html(content);
     $('body').addClass('activity-search-screen');
-    // setTimeout(function(){
-    //     $('select').material_select();
-    //     $('.modal').modal();
-    //     $('.modal').modal('open');
-    // }, 100)  
+    setTimeout(function(){
+        $('select').material_select();
+    }, 100)  
 }
 
 
