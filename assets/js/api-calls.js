@@ -1,6 +1,9 @@
+var baseUrl = 'https://revealcity-api.herokuapp.com'; // deployed app
+//var baseUrl = 'http://127.0.0.1:5000'; // localMachine
+
 function getPlaces(data){
     $.ajax({
-        url:'http://127.0.0.1:5000/api/places',
+        url: baseUrl + '/api/places',
         type: 'POST',
         data: data,
         contentType:'application/json; charset=utf-8',
@@ -17,7 +20,7 @@ function getPlaces(data){
 
 function postInterest(data){
     $.ajax({
-        url:'http://127.0.0.1:5000/api/interests',
+        url: baseUrl + '/api/interests',
         type: 'POST',
         data: data,
         contentType:'application/json; charset=utf-8',
@@ -30,7 +33,7 @@ function postInterest(data){
 
 function createUser(data) {
     $.ajax({
-        url: 'http://127.0.0.1:5000/api/user',
+        url: baseUrl + '/api/user',
         type: 'POST',
         data: data,
         contentType:'application/json; charset=utf-8',
@@ -46,7 +49,7 @@ function createUser(data) {
 function logIn(data) {
     console.log(data);
     $.ajax({
-        url: 'http://127.0.0.1:5000/api/login',
+        url: baseUrl + '/api/login',
         type: 'POST',
         data: data,
         contentType:'application/json; charset=utf-8',
