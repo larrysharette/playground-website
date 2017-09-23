@@ -9,11 +9,8 @@ $( document ).ready(function(){
 var isFirstPage = false;
 
 function loadResults(data){
-    console.log(data);
     if (data.length > 0){
-        console.log(data);
         for(i=0; i < data.length; i++){
-            console.log(data[i]);
             addCard(data[i])
         }
     }
@@ -63,12 +60,13 @@ function signUp() {
 
 function addCard(data) {
     let card = `
-    <div class="col s12 m3">
+    <div class="col s12 m3" container-type="result-card">
         <div class="card white darken-2" place-id="${data.place_id}">
             <div class="card-content">
                 <span class="card-title">${data.name}</span>
                 <p>Address: ${data.vicinity}</p>
                 ${starRating(data.rating)}
+                ${priceLevel(data)}
             </div>
             <div class="card-action">
                 <a onclick="updateInterest($(this))" interest-type="-1">Hate It</a>
@@ -135,6 +133,10 @@ function updateInterest(element) {
     data.user_id = localStorage.getItem('user_id');
     data.place_id = $(element).closest('div[place-id]').attr('place-id');
     data.interest_type = interestType;
+
+    if (interestType === -1) {
+        element.closest('div[container-type="result-card"]').remove();
+    }
 
     postInterest(JSON.stringify(data));
 }

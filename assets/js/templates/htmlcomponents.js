@@ -207,13 +207,31 @@ function loadActivitySearch() {
 
 function starRating(rating){
     let content = ``;
-    for(i = 1; i < 6; i++){
-        if (i <= Math.floor(rating)) {
-            content += `<span><i class="material-icons">star</i></span>`
-        } else if ((i - rating) < 1) {
-            content += `<span><i class="material-icons">star-half</i></span>`
+    for(k = 1; k < 6; k++){
+        if (k <= Math.floor(rating)) {
+            content += `<span><i class="material-icons yellow-text text-darken-1">star</i></span>`
+        } else if ((k - rating) < 1) {
+            content += `<span><i class="material-icons yellow-text text-darken-1">star_half</i></span>`
         } else {
-            content += `<span><i class="material-icons">star-border</i></span>`
+            content += `<span><i class="material-icons yellow-text text-darken-1">star_border</i></span>`
+        }
+    }
+    return content;
+}
+
+function priceLevel(data){
+    let content = ``;
+    if(data.hasOwnProperty('price_level')){
+        for(k = 1; k < 5; k++){
+            if (k <= data.price_level) {
+                content += `<span><i class="material-icons green-text text-darken-1">attach_money</i></span>`        
+            } else {
+                content += `<span><i class="material-icons grey-text text-lighten-2">attach_money</i></span>`
+            }
+        }
+    } else {
+        for(k = 1; k < 5; k++){
+            content += `<span><i class="material-icons grey-text text-lighten-2">attach_money</i></span>`
         }
     }
     return content;
