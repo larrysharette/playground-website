@@ -205,6 +205,19 @@ function loadActivitySearch() {
     }, 100)  
 }
 
+function starRating(rating){
+    let content = ``;
+    for(i = 1; i < 6; i++){
+        if (i <= Math.floor(rating)) {
+            content += `<span><i class="material-icons">star</i></span>`
+        } else if ((i - rating) < 1) {
+            content += `<span><i class="material-icons">star-half</i></span>`
+        } else {
+            content += `<span><i class="material-icons">star-border</i></span>`
+        }
+    }
+    return content;
+}
 
 
 function outdoorModal() {

@@ -6,13 +6,15 @@ $( document ).ready(function(){
     
 });
 
+var isFirstPage = false;
+
 function loadResults(data){
     console.log(data);
-    if (data.results.length > 0){
+    if (data.length > 0){
         console.log(data);
-        for(i=0; i < data.results.length; i++){
-            console.log(data.results[i]);
-            addCard(data.results[i])
+        for(i=0; i < data.length; i++){
+            console.log(data[i]);
+            addCard(data[i])
         }
     }
 }
@@ -66,6 +68,7 @@ function addCard(data) {
             <div class="card-content">
                 <span class="card-title">${data.name}</span>
                 <p>Address: ${data.vicinity}</p>
+                ${starRating(data.rating)}
             </div>
             <div class="card-action">
                 <a onclick="updateInterest($(this))" interest-type="-1">Hate It</a>
@@ -122,6 +125,7 @@ function activitySearch(element) {
     })
     data.keywords = dataArray;
     data.user_id = localStorage.getItem('user_id');
+    data.get_next_page = isFirstPage;
     getPlaces(JSON.stringify(data));
 }
 

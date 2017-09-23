@@ -2,6 +2,7 @@ var baseUrl = 'https://revealcity-api.herokuapp.com'; // deployed app
 //var baseUrl = 'http://127.0.0.1:5000'; // localMachine
 
 function getPlaces(data){
+    console.log(data);
     $.ajax({
         url: baseUrl + '/api/places',
         type: 'POST',
